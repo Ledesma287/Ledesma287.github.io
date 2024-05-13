@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+<body>
+
+<div id="myPlot" style="width:100%;max-width:700px"></div>
+<script>
+let inicio = prompt("Valor inicial de la grafica", 0);
+let fin = prompt("Valor final de la grafica", 0);
+    if(inicio>fin)
+{
+alert("El valor inicial debe ser menor");
+}
+    let opc = prompt("Ingresa la opcion que quieres calcular: \n 1.)Seno, 2)Coseno, 3)Tangente, 4)Cotangente");
+if(opc==1)
+{
+let exp = "Math.sin(x)";
+// Generate values
+const xValues = [];
+const yValues = [];
+
+for (let x = +inicio; x <= +fin; x += 0.1) 
+{
+ xValues.push(x);
+ yValues.push(eval(exp));
+}
+}
+
+    if(opc==2)
+    {
+let exp = "Math.cos(x)";
+let inicio = prompt("Valor inicial de la grafica", 0);
+let fin = prompt("Valor final de la grafica", 0);
+// Generate values
+const xValues = [];
+const yValues = [];
+    }
+    if(opc==3)
+    {
+let exp = "Math.tan(x)";
+let inicio = prompt("Valor inicial de la grafica", 0);
+let fin = prompt("Valor final de la grafica", 0);
+// Generate values
+const xValues = [];
+const yValues = [];
+    }
+for (let x = +inicio; x <= +fin; x += 0.1) 
+{
+ xValues.push(x);
+ yValues.push(eval(exp));
+}
+    break;
+
+    case 1:
+let exp = "Math.tan(x)";
+let inicio = prompt("Valor inicial de la grafica", 0);
+let fin = prompt("Valor final de la grafica", 0);
+if(inicio>fin)
+{
+alert("El valor inicial debe ser menor");
+}
+// Generate values
+const xValues = [];
+const yValues = [];
+
+for (let x = +inicio; x <= +fin; x += 0.1) 
+{
+ xValues.push(x);
+ yValues.push(eval(exp));
+}
+    break;
+}
+// Display using Plotly
+const data = [{x:xValues, y:yValues, mode:"lines"}];
+const layout = {title: "y = " + exp};
+Plotly.newPlot("myPlot", data, layout);
+</script>
+</body>
+</html>

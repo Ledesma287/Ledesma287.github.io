@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dibujar Círculo con Formulario</title>
+<style>
+    canvas {
+        border: 1px solid black;
+    }
+</style>
+<script>
+    // Función para dibujar
+    var cont = 0;
+    function ahorcado() 
+    {
+        var canvas = document.getElementById('miCanvas');
+        var ctx = canvas.getContext('2d');
+        let pal = document.forms[0].pal.value;
+        
+        if(pal=='Cambria')
+        {
+            alert(`Ganaste`)
+        }
+        else
+        {
+            cont++;
+        }
+        if(cont<=1)
+        {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        ctx.beginPath();
+        ctx.arc(100, 50, 40, 0, 2 * Math.PI);
+        ctx.stroke();
+        }
+        alert(cont);
+        if(cont<=2)
+        {
+        //manoizq
+        ctx.beginPath();
+        ctx.moveTo(100, 90);
+        ctx.lineTo(50,120);
+        ctx.stroke();
+        }
+        if(cont>2&&cont<3)
+        {
+        //manoder
+        ctx.beginPath();
+        ctx.moveTo(100, 90);
+        ctx.lineTo(150,120);
+        ctx.stroke();
+        }
+        if(cont>3&&cont<4)
+        {
+        //cuerpo
+        ctx.beginPath();
+        ctx.moveTo(100, 90);
+        ctx.lineTo(100,190);
+        ctx.stroke();
+        }
+        if(cont>4)
+        {
+        //pieizq
+        ctx.beginPath();
+        ctx.moveTo(100, 190);
+        ctx.lineTo(50,220);
+        ctx.stroke();
+        }
+        if(cont>5)
+        {
+        //pieizq
+        ctx.beginPath();
+        ctx.moveTo(100, 190);
+        ctx.lineTo(150,220);
+        ctx.stroke();
+        //alert(`Perdiste`);
+        }
+    }
+    function Borrar()
+    {
+        var canvas = document.getElementById('miCanvas');
+        var ctx = canvas.getContext('2d');
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        cont = 0;
+    }
+</script>
+</head>
+<body>
+
+<canvas id="miCanvas" width="200" height="300"></canvas>
+
+<form id="formulario" onsubmit="return ahorcado();">
+    <p> Palabra <input id="pal" name="pal" type="text" /></p>
+    
+</form>
+    <p><button type="submit">Dibujar</button></p>
+    <p><button type="submit">Borrar</button></p>
+</body>
+</html>

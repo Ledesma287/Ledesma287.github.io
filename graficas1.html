@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+<body>
+<div id="myPlot" style="width:100%;max-width:700px"></div>
+<div id="myPlot2" style="width:100%;max-width:700px"></div>
+<div id="myPlotR" style="width:100%;max-width:700px"></div>
+<script>
+const xArray = ["PrograI", "PrograWeb", "MateI", "Quimica", "Ingles V"];
+const yArray = [9, 9, 6, 7, 9];
+const y1Array = [8.5, 8, 4, 6, 9];
+let yRArray = [0, 0, 0, 0, 0];
+for(i=0;i<6;i++)
+    {
+        yRArray[i]=(Math.floor(Math.random()*10)+1);
+    }
+const data = [{
+ x:xArray,
+ y:yArray,
+ type:"bar",
+ orientation:"v",
+ marker: {color:"rgba(0,0,255,0.6)"}
+}];
+const layout = {title:"Primer parcial"};
+Plotly.newPlot("myPlot", data, layout);
+const data1 = [{
+ x:xArray,
+ y:y1Array,
+ type:"bar",
+ orientation:"v",
+ marker: {color:"rgba(255,0,0,0.6)"}
+}];
+const layout1 = {title:"Segundo parcial"};
+Plotly.newPlot("myPlot2", data1, layout1);
+const datar1 = [{
+ x:xArray,
+ y:yRArray,
+ type:"bar",
+ orientation:"v",
+ marker: {color:"rgba(0,255,0,0.6)"}
+}];
+const layoutr1 = {title:"Tercer parcial"};
+Plotly.newPlot("myPlotR", datar1, layoutr1);
+</script>
+</body>
+</html>

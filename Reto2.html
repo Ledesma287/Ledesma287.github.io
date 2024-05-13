@@ -1,0 +1,51 @@
+<html>
+
+<head>
+
+  <title>Bienvenida del usuario</title>
+
+  <script type = "text/javascript">
+
+  function alertName() 
+  {
+
+    var cel1= parseInt(document.forms[0].cel.value);
+    var far1= document.forms[0].far.value;
+    var opcion1= parseInt(document.forms[0].opcion.value);
+    var kel1=  document.forms[0].kel.value;
+    document.write(opcion1);
+    if(opcion1==1)
+    {
+        document.write("Kelvin");
+        kel1=(cel1+273.15);
+        document.write(kel1);
+    }
+    if(opcion1==2)
+    {
+        document.write("Farenheit");
+        far1=((cel1*1.8)+32);
+        document.write(far1);
+    }
+    return true;
+  }
+
+  </script>
+
+</head>
+
+<body>
+
+<form id="myform" onsubmit="return alertName();">
+
+<p>Grados Celsius <input id="cel" name="cel" type="text" /></p>
+<select name="opcion" id="opcion">
+    <option value="1">Kelvin</option>
+    <option value="2">Farenheit</option>
+</select>
+<p><input type="submit" /></p>
+
+</form>
+
+</body>
+
+</html>

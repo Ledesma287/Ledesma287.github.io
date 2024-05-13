@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dibujar Círculo con Formulario</title>
+<style>
+    canvas {
+        border: 1px solid black;
+    }
+</style>
+</head>
+<body>
+
+<canvas id="miCanvas" width="200" height="300"></canvas>
+
+<form id="formulario" onsubmit="return ahorcado();">
+    <p> Palabra <input id="pal" name="pal" type="text" /></p>
+    <button type="submit">Dibujar</button>
+    <button type="reset" onclick="borrarCanvas()">Borrar</button>
+</form>
+
+<script>
+    var cont = 0; // Contador de intentos
+
+    // Función para dibujar
+    function ahorcado() {
+        var canvas = document.getElementById('miCanvas');
+        var ctx = canvas.getContext('2d');
+        let pal = document.forms[0].pal.value;
+
+        if (pal === 'Cambria') {
+            alert('¡Ganaste!');
+            return false; // Detiene el envío del formulario
+        } else {
+            cont++;
+        }
+
+        // Dibujar partes del ahorcado solo si es un intento nuevo
+        if (cont <= 6) {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            switch (cont) {
+                case 1:
+                    ctx.beginPath();
+                    ctx.arc(100, 50, 40, 0, 2 * Math.PI);
+                    ctx.stroke();
+                    break;
+                case 2:
+                    ctx.beginPath();
+                    ctx.moveTo(100, 90);
+                    ctx.lineTo(50, 120);
+                    ctx.stroke();
+                    break;
+                case 3:
+                    ctx.beginPath();
+                    ctx.moveTo(100, 90);
+                    ctx.lineTo(150, 120);
+                    ctx.stroke();
+                    break;
+                case 4:
+                    ctx.beginPath();
+                    ctx.moveTo(100, 90);
+                    ctx.lineTo(100, 190);
+                    ctx.stroke();
+                    break;
+                case 5:
+                    ctx.beginPath();
+                    ctx.moveTo(100, 190);
+                    ctx.lineTo(50, 220);
+                    ctx.stroke();
+                    break;
+                case 6:
+                    ctx.beginPath();
+                    ctx.moveTo(100, 190);
+                    ctx.lineTo(150, 220);
+                    ctx.stroke();
+                    alert('¡Perdiste!');
+                    return false; // Detiene el envío del formulario
+            }
+        }
+        return false; // Detiene el envío del formulario
+    }
+
+    // Función para borrar el canvas
+    function borrarCanvas() {
+        var canvas = document.getElementById('miCanvas');
+        var ctx = canvas.getContext('2d');
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        cont = 0; // Reinicia el contador
+    }
+
+    // Agregar evento para enviar el formulario
+    var formulario = document.getElementById('formulario');
+    formulario.addEventListener('submit', function(event) {
+        event.preventDefault(); // Evita el envío del formulario
+        ahorcado();
+    });
+</script>
+
+</body>
+</html>
