@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Encriptador</title>
+    <script>
+        // Objeto para mapear cada letra a su equivalente encriptado
+        const encriptacion = 
+        {
+            'A': 'I', 'B': 'C', 'C': 'Ñ', 'D': 'H', 'E': 'O',
+            'F': 'M', 'G': 'T', 'H': 'L', 'I': 'B', 'J': 'S',
+            'K': 'A', 'L': 'R', 'M': 'Q', 'N': 'P', 'Ñ': 'E',
+            'O': 'W', 'P': 'J', 'Q': 'F', 'R': 'V', 'S': 'U',
+            'T': 'K', 'U': 'X', 'V': 'D', 'W': 'Y', 'X': 'N',
+            'Y': 'Z', 'Z': 'G'
+        };
+
+        function crypto() {
+            const palabra = document.getElementById("palabra").value.toUpperCase();
+            let palabraEncriptada = "";
+
+            for (let i = 0; i < palabra.length; i++) {
+                const letra = palabra[i];
+                if (encriptacion.hasOwnProperty(letra)) {
+                    palabraEncriptada += encriptacion[letra];
+                } else {
+                    palabraEncriptada += letra; // Mantener otros caracteres sin cambio
+                }
+            }
+
+            document.getElementById("resultado").textContent = `Palabra encriptada: ${palabraEncriptada}`;
+
+            crearPDF(palabra, palabraEncriptada);
+        }
+    </script>
+</head>
+<body>
+    <h1>Encriptador</h1>
+    <form onsubmit="event.preventDefault(); crypto();">
+        <label for="palabra">Ingrese una palabra:</label>
+        <input type="text" id="palabra" required>
+        <button type="submit">Encriptar</button>
+    </form>
+    <p id="resultado"></p>
+</body>
+</html>
